@@ -5,12 +5,14 @@ from kivy.uix.textinput import TextInput
 
 class MainApp(App):
     def build(self):
+
         self.operators = ["/", "*", "+", "-"]
         self.last_was_operator = None
         self.lastbutton = None
         main_layout = BoxLayout(orientation="vertical")
         self.solution = TextInput(
             muitiline = False, readonly=True, halign="rigth", font_size= 55
+
         )
         main_layout.add_widget(self.solution)
         buttons = [
@@ -22,6 +24,7 @@ class MainApp(App):
         for row in buttons:
             h_layout = BoxLayout()
             for label in row:
+
                 button = Button(
                     text = label,
                     pos_hint = {"center_x": 0.5, "center_y": 0.5},
@@ -32,8 +35,7 @@ class MainApp(App):
                 equals_button = Button(text = "=", pos_hint = {"center_x": 0.5, "center_y": 0.5} )
                 equals_button.bind(on_press = self.on_solution)
                 main_layout.add_widget(equals_button)
-
-            return main_layout
+        return main_layout
 
         def on_button_press(self, instance):
             current = self.solution.text
